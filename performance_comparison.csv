@@ -1,0 +1,9 @@
+Graph ID,Algorithm,MST Total Cost,Operations Count,Execution Time (ms)
+1,Prim's Algorithm,18,12,0.1059
+1,Kruskal's Algorithm,16,11,0.052
+2,Prim's Algorithm,6,10,0.0344
+2,Kruskal's Algorithm,6,8,0.0136
+3,Prim's Algorithm,43,22,0.0796
+3,Kruskal's Algorithm,34,21,0.0246
+4,Prim's Algorithm,325,50,0.3382
+4,Kruskal's Algorithm,325,50,0.1206

@@ -1,5 +1,6 @@
-import java.util.*;
-
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class KruskalsAlgorithm {
@@ -10,6 +11,7 @@ public class KruskalsAlgorithm {
         Collections.sort(graph.edges, Comparator.comparingInt(e -> e.weight));
 
         UnionFind unionFind = new UnionFind(vertices);
+        int operationsCount = 0;
         long startTime = System.nanoTime();
 
         for (Edge edge : graph.edges) {
@@ -19,16 +21,19 @@ public class KruskalsAlgorithm {
             if (unionFind.find(fromIndex) != unionFind.find(toIndex)) {
                 mstEdges.add(edge);
                 unionFind.union(fromIndex, toIndex);
+                operationsCount++;
             }
+            operationsCount++;
         }
 
         long endTime = System.nanoTime();
         double executionTimeMs = (endTime - startTime) / 1_000_000.0;
 
         int totalCost = mstEdges.stream().mapToInt(e -> e.weight).sum();
-        return new AlgorithmResult(mstEdges, totalCost, graph.edges.size(), executionTimeMs);
+        return new AlgorithmResult(mstEdges, totalCost, operationsCount, executionTimeMs);
     }
 }
+
 
 class UnionFind {
     private int[] parent;
